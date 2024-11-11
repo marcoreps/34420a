@@ -14,7 +14,7 @@ my_instrument.write("DISPlay OFF")
 
 my_instrument.write("CONFigure:VOLTage:DC 0.001, MAX, (@FRONt1)")
 my_instrument.write("ROUTe:TERMinals FRONt1")
-my_instrument.write("SENSe:VOLTage:DC:NPLCycles 5")
+my_instrument.write("SENSe:VOLTage:DC:NPLCycles 2")
 my_instrument.write("INPut:FILTer:STATe OFF")
 my_instrument.write("TRIGger:DELay 0")
 my_instrument.write("OUTPut:STATe OFF")
