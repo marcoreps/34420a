@@ -10,23 +10,28 @@ my_instrument.write('*CLS')
 time.sleep(3)
 print(my_instrument.query('*IDN?'))
 #print(my_instrument.query('SYSTem:ERRor?'))
-my_instrument.write("DISPlay OFF")
+#my_instrument.write("DISPlay OFF")
 
 my_instrument.write("CONFigure:VOLTage:DC 0.001, MAX, (@FRONt1)")
 my_instrument.write("ROUTe:TERMinals FRONt1")
-my_instrument.write("SENSe:VOLTage:DC:NPLCycles 2")
+my_instrument.write("SENSe:VOLTage:DC:NPLCycles 100")
 my_instrument.write("INPut:FILTer:STATe OFF")
-my_instrument.write("TRIGger:DELay 0")
+#my_instrument.write("TRIGger:DELay 0")
+
+
+my_instrument.write("CALC:FUNC AVER")
+my_instrument.write("CALC:STATE ON")
+my_instrument.write("SAMPLE:COUNT 50")
+
+
 my_instrument.write("OUTPut:STATe OFF")
-
 my_instrument.write("SENSe:NULL ONCE")
-
 my_instrument.write("TRIGger:SOURce IMMediate")
 
 
 
 timestr = time.strftime("%Y%m%d-%H%M%S_")
-with open('csv/'+timestr+'HP_34420A_short_NPLC5.csv', mode='w') as csv_file:
+with open('csv/'+timestr+'HP_34420A_short_NPLC100_CALC_AVER.csv', mode='w') as csv_file:
     fieldnames = ['time', '34420a_volt']
     writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
     writer.writeheader()
